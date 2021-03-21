@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Restaurant Menu</title>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/css/table.css}"/>
+    <link rel="stylesheet" th:href="@{/css/button.css}"/>
+
+    <a href="/order">
+    <button class="myButton">Przejdź do mojego zamówienia</button>
+    </a>
+    <p>Wartość zamówienia</p>
+    <!--    <p th:text="${order.value}"></p>-->
+</head>
+
+<style>
+    body {background: #FBE6E8; align="center"}
+
+</style>
+
+<body>
+
+<main role="main" class="container">
+
+    <table class="myTable" align="center" th:each="dish : ${dishes}">
+        <th>
+            <tr>
+                <th th:text="${dish.dishGroup}"></th>
+            </tr>
+        </th>
+        <tbody>
+        <tr>
+            <td width="400px" th:text="${dish.name}"></td>
+            <td width="50px" th:text="${dish.price}"></td>
+            <td>
+                <form action="#" data-th-action="@{/menu}" data-th-object="${order}" method="post">
+                    <button type="submit" name="action" value="save" class="myButton">Dodaj do zamówienia</button>
+                </form>
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+</body>
+</html>
